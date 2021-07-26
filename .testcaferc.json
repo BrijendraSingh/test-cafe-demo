@@ -1,0 +1,13 @@
+{
+    "browsers":["firefox"],
+    "screenshots":{
+        "path":"reports/screenshots",
+        "takeOnFails":"true",
+        "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${FILE_INDEX}.png"
+    }
+    ,
+    "selectorTimeout": 3000,
+    "assertionTimeout": 1000,
+    "pageLoadTimeout": 1000,
+    "speed": 0.01
+}
