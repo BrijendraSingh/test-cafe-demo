@@ -6,13 +6,15 @@ export class Product {
     password:Selector;
     loginBtn:Selector;
     loginLink:Selector;
+    navLink: Selector;
 
     constructor () {
         this.nameOfUser = Selector('a#nameofuser');
         this.userName = Selector('input#loginusername');
         this.password = Selector('input#loginpassword');
-        this.loginBtn = Selector(`button[type='button']`);
-        this.loginLink = Selector('a#login2');
+        this.loginBtn = Selector('button').withText('Log in');
+        this.loginLink = Selector('a#login2').withText('Log in');
+        this.navLink= Selector('.nav-link')
     }
 
     async login(username:string, password:string){
@@ -20,12 +22,14 @@ export class Product {
             .click(this.loginLink)
             .typeText(this.userName, username)
             .typeText(this.password, password)
-            .click(this.loginBtn.withText('Log in'));
+            .click(this.loginBtn)
+            // .click(this.navLink.withText('Cart'));
         
     }
 
     async verifyUser(user:string) {
-        const nou = this.nameOfUser.innerText;
+
+        const nou = this.nameOfUser.with({visibilityCheck:true}).innerText;
         await t.expect(nou).eql(`Welcome ${user}`);
     }
 }

@@ -12,11 +12,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "basic-test": "testcafe chrome e2e/test-scripts/basic-test.js",
-    "mock-test": "testcafe chrome e2e/test-scripts/mockTest.ts",
+    "mock-test": "testcafe chrome e2e/test-scripts/mock-ui-test/**-unstructured.ts",
     "js-test": "testcafe chrome e2e/test-scripts/**.js --debug-on-fail",
     "ts-test": "testcafe  e2e/test-scripts/ts-test.ts",
     "all-ts-test": "testcafe chrome e2e/test-scripts/**.ts",
-    "role-test": "testcafe chrome e2e/test-scripts/role-for-login.ts"
+    "role-test": "testcafe chrome e2e/test-scripts/user-role/**.ts --debug-on-fail",
+    "supert": "testcafe e2e/test-scripts/api-test-supertest/**.ts"
   },
   "devDependencies": {
     "@types/supertest": "^2.0.11",

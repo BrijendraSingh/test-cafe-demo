@@ -1,13 +1,18 @@
 {
-    "browsers":["firefox"],
+    "browsers": "firefox",
     "screenshots":{
         "path":"reports/screenshots",
         "takeOnFails":"true",
         "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${FILE_INDEX}.png"
     }
     ,
-    "selectorTimeout": 3000,
-    "assertionTimeout": 1000,
-    "pageLoadTimeout": 1000,
-    "speed": 0.01
+    "selectorTimeout": 20000,
+    "assertionTimeout": 10000,
+    "pageLoadTimeout": 10000,
+    "ajaxRequestTimeout": 30000,
+    "pageRequestTimeout": 8000,
+    "browserInitTimeout": 32000,
+    "testExecutionTimeout": 35000,
+
+    "speed": 0.7
 }

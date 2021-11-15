@@ -14,22 +14,21 @@ const requestLogger : RequestLogger = RequestLogger(
 
 fixture `supertest api test`
     .page('https://opensource-demo.orangehrmlive.com/')
-    .beforeEach(async ()=> {
+    .beforeEach(async t=> {
         RequestLogger().clear;
+        await t.maximizeWindow();
+        await orangeHrmPO.login('Admin','admin123');
+    })
+    .afterEach(async t=>{
+        await orangeHrmPO.logout();
     });
-    
+
 test('get - eomployee data', async t=>{
-    await orangeHrmPO.login('Admin','admin123');
-    await orangeHrmPO.viewLeaveList();
-    console.log('requestLogger -->');
-    console.log(requestLogger.requests[0].request.headers['cookie']);
-
-
-    //super test
     const res = await request('https://opensource-demo.orangehrmlive.com')
-            .post('/index.php/pim/getEmployeeListAjax?required_permissions={%22action%22:[%22view_leave_list%22]}')
+            .get('/index.php/pim/getEmployeeListAjax')
             .set('Cookie',requestLogger.requests[0].request.headers['cookie'])
             .send();
     console.log(res.status);
+    console.log('view employee list', res.text);
     await t.expect(res.text).contains('Aaliyah Haq');
 }).requestHooks(requestLogger);
