@@ -4,11 +4,10 @@ import { step } from "./utils";
 class WarningFlow<T extends Page>{
     public page : T;
 
-    @step({desc: 'login flow', expected: 'login flow expected'})
+    @step({desc: 'getWarningMethod flow', expected: 'getWarningMethod flow expected'})
     getWarningMethod(): this|any {
-        console.log('inside getWarningMethod ==');
         return async t  => {
-           console.log('inside t await');
+            console.log('inside getWarningMethod ==');
         //    console.log(' page ==>', this.page.elementOne);
         //    await t.wait(2000);
         };

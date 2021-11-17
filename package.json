@@ -25,7 +25,7 @@
     "operations": "testcafe e2e/test-scripts/operations/**-date.ts",
     "controller": "testcafe e2e/test-scripts/test-controller/**.ts",
     "play": "testcafe e2e/test-scripts/playground/**-test.js",
-    "e2e": "testcafe chrome:headless e2e/spec-files/**.spec.ts",
+    "e2e": "testcafe chrome:headless e2e/spec-files/**-spec.ts",
     "allure-demo": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report"
   },
   "devDependencies": {

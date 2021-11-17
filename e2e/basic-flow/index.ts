@@ -3,6 +3,8 @@ import LoginFlow from "./login.flow";
 import { applyMixins, pipePromise, step } from "./utils";
 import WarningFlow from "./warning.flow";
 
+const SKIP_EXECUTION=true;
+
 class BasicFlow<T extends Page>{
     constructor(public t: TestController, public page: T){}
     protected steps: Array< (t: TestController) => Promise<any>> =[];
@@ -24,24 +26,26 @@ class BasicFlow<T extends Page>{
          };   
     } 
     
-    // async execute(){
-    //     await this.t.maximizeWindow();
-    //     try{
-    //         // if (config.skipExecution =='false'){
-    //         // const remainingSteps = this.steps.filter(s => !s['executed']); 
-    //         // await pipePromise(...remainingSteps)(this.t);
-    //     } catch (e) {
-    //         // e.executedSteps = this.steps
-    //         //     .filter(oneStep => oneStep['executed'])
-    //         //     .reduce((acc, currStep)=> {
-    //         //         const stepDesc = `  ** ${currStep.name['content']}, ${currStep.name['expected']}`;
-    //         //         return acc + stepDesc + '\n';
-    //         //     }, '');
-    //         // e.steps = this.steps.map(aStep => aStep.name);
-    //         throw e;        
-    //     }
-    //     return "abc" //this.steps.map(aStep => aStep.name);
-    // }
+
+    async execute(){
+        await this.t.maximizeWindow();
+        try{
+            // if (true){  
+                const remainingSteps = this.steps.filter(s => !s['executed']); 
+                await pipePromise(...remainingSteps)(this.t);
+            // }
+        } catch (e) {
+            e.executedSteps = this.steps
+                .filter(oneStep => oneStep['executed'])
+                .reduce((acc, currStep)=> {
+                    const stepDesc = `  ** ${currStep.name['content']}, ${currStep.name['expected']}`;
+                    return acc +  stepDesc + '\n';
+                }, '');
+            e.steps = this.steps.map(aStep => aStep.name);
+            throw e;        
+        }
+        return this.steps.map(aStep => aStep.name);
+    }
 
 }
 

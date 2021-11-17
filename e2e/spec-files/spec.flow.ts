@@ -1,7 +1,6 @@
 import BasicFlow from "../basic-flow";
 import { step } from "../basic-flow/utils";
 import { LoginPage } from "../po-model/login.po";
-import {t} from 'testcafe';
 
 class AbcFlow extends BasicFlow<LoginPage> {
     constructor(public t: TestController){
@@ -9,21 +8,21 @@ class AbcFlow extends BasicFlow<LoginPage> {
     }
 
     @step({
-        desc: 'login flow test', 
-        expected:'expected login flow'
+        desc: 'loginABC flow test', 
+        expected:'expected loginABC flow'
     })
     loginABC(name: string): this|any {
-        
-            console.log('inside loginABC flow' + name); 
-            this.page.loginMyApp();  
-            return async (t: TestController) => {       
-                await t.expect('abc').eql('abcq');  
-            }  
+        return async (t: TestController) => {       
+            this.page.loginMyApp();
+            await t.expect('abc').eql('abc');  
+        }  
     }
 
-    @step({desc: 'login flow test', expected:'expected login flow'})
+    @step({desc: 'logoutAbc flow test', expected:'expected logoutAbc flow'})
     logoutAbc(name: string): this|any {
-        console.log('inside logout flow' + name);    
+        return async t => {
+            console.log('inside logoutAbc flow' + name); 
+        }  
     }
 }
 

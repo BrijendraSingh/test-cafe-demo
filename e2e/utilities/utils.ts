@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 export function tFixture(name: any){
     return fixture(name).page('https://google.com').beforeEach( async t => {
-        console.log('before each');    
+        // console.log('before each');    
     });
 }
 
