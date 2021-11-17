@@ -5,19 +5,28 @@
   "author": "brijendra singh",
   "license": "ISC",
   "dependencies": {
+    "allure-commandline": "^2.13.8",
     "moment": "2.29.1",
     "testcafe": "1.15.0",
+    "testcafe-reporter-allure": "^1.0.5",
+    "testcafe-reporter-tesults": "^1.1.0",
     "typescript": "^4.3.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "basic-test": "testcafe chrome e2e/test-scripts/basic-test.js",
-    "mock-test": "testcafe chrome e2e/test-scripts/mock-ui-test/**-unstructured.ts",
+    "mock-test": "testcafe e2e/test-scripts/mock-ui-test/**.ts",
+    "mock-test-role": "testcafe chrome e2e/test-scripts/api-test-supertest/**-login.ts --reporter allure",
     "js-test": "testcafe chrome e2e/test-scripts/**.js --debug-on-fail",
-    "ts-test": "testcafe  e2e/test-scripts/ts-test.ts",
+    "ts-test": "testcafe  e2e/test-scripts/ts-test.ts -r tesults -- tesults-target=target tesults-config=config.json",
     "all-ts-test": "testcafe chrome e2e/test-scripts/**.ts",
     "role-test": "testcafe chrome e2e/test-scripts/user-role/**.ts --debug-on-fail",
-    "supert": "testcafe e2e/test-scripts/api-test-supertest/**.ts"
+    "supert": "testcafe e2e/test-scripts/api-test-supertest/**.ts",
+    "operations": "testcafe e2e/test-scripts/operations/**-date.ts",
+    "controller": "testcafe e2e/test-scripts/test-controller/**.ts",
+    "play": "testcafe e2e/test-scripts/playground/**-test.js",
+    "e2e": "testcafe chrome:headless e2e/spec-files/**.spec.ts",
+    "allure-demo": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report"
   },
   "devDependencies": {
     "@types/supertest": "^2.0.11",

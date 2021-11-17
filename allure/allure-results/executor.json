@@ -1,0 +1,10 @@
+{
+    "name": "Brijendra",
+    "type": "Prakash",
+    "url": "http://singh.org",
+    "buildOrder": 1,
+    "buildName": "aabc app build#1", 
+    "buildUrl": "http://example.org/build#1",
+    "reportUrl": "http://example.org/build#1/AllureReport",
+    "reportName": "BPS Demo allure report"
+  }

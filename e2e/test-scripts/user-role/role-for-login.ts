@@ -7,7 +7,8 @@ fixture`user role test`
 test('Regular user test', async t=> {
      await t
         .navigateTo('https://www.demoblaze.com').maximizeWindow()
-        .useRole(testUser);
+        .useRole(testUser)
+        .eval(() => location.reload(true));
      await product.verifyUser('test');
 });   
 
@@ -15,8 +16,9 @@ test('Admin user test', async t=> {
     await t
         .navigateTo('https://www.demoblaze.com')
         .useRole(adminUser)
+        .eval(() => location.reload(true));
     await product.verifyUser('admin');
-}).only;
+});
 
 test('login' , async t=>{
     await t.navigateTo('https://www.demoblaze.com').maximizeWindow();

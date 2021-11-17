@@ -1,7 +1,7 @@
 import { Selector, t } from 'testcafe';
-import { Page }  from './basic-page';
+import { Page }  from './base-po';
 
-export class NewPage extends Page {
+export class TestCafeDemoPage extends Page {
     featureChbx: Selector;
     constructor() {
         super();
@@ -25,4 +25,4 @@ export class NewPage extends Page {
     }
 }
 
-export default new NewPage();
+export default new TestCafeDemoPage();

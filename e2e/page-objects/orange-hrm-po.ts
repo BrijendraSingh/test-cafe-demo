@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe';
 
-class OrangeHrmPO {
+class OrangeHrmPage {
     username : Selector;
     password : Selector;
     loginBtn : Selector;
@@ -49,4 +49,4 @@ class OrangeHrmPO {
     }
 }
 
-export default new OrangeHrmPO();
+export default new OrangeHrmPage();

@@ -1,0 +1,14 @@
+<environment>
+    <parameter>
+        <key>Browser</key>
+        <value>Safari</value>
+    </parameter>
+    <parameter>
+        <key>Browser.Version</key>
+        <value>31.0</value>
+    </parameter>
+    <parameter>
+        <key>Stand</key>
+        <value>QA</value>
+    </parameter>
+</environment>

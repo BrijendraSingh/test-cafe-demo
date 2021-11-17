@@ -1,4 +1,4 @@
-import { RequestMock, Selector } from "testcafe";
+import { RequestMock } from "testcafe";
 import bookStorePage from '../../page-objects/book-store-application-po'
 
 const mockData = require('../../resources/book-store-mock-data.json');
